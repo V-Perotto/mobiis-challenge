@@ -1,0 +1,34 @@
+services:
+  api:
+    build: .
+    container_name: mobiis_challenge
+    ports:
+      - "${PORT}:${PORT}"
+    environment:
+      - MONGODB_URI=${MONGODB_URI}
+      - JWT_SECRET=${JWT_SECRET}
+      - PORT=${PORT}
+    depends_on:
+      - db
+    networks:
+      - api-network
+
+  db:
+    image: mongo:latest
+    container_name: mongodb_api
+    ports:
+      - "${MONGO_PORT}:${MONGO_PORT}"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_ROOT_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ROOT_PASSWORD}
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - api-network
+
+networks:
+  api-network:
+    driver: bridge
+
+volumes:
+  mongo-data:
