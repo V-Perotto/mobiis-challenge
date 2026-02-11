@@ -40,22 +40,22 @@ $ vim .env  # OU nano .env
 Então escreva e salve:
 
 ```bash
-MONGODB_URI=<sua_url_do_mongo>
-MONGO_PORT=<sua_porta_do_mongo>
-PORT=<sua_porta_da_api>
-JWT_SECRET=<seu_segredo_jwt_aqui>
 MONGO_ROOT_USER=<seu_usuario_root>
 MONGO_ROOT_PASSWORD=<senha_do_seu_usuario_root>
+MONGO_PORT=<sua_porta_do_mongo>
+MONGODB_URI=<sua_url_do_mongo>
+PORT=<sua_porta_da_api>
+JWT_SECRET=<seu_segredo_jwt_aqui>
 ```
 
 > Exemplo:
 > ```bash
-> MONGODB_URI=mongodb://localhost:27017/mobiis-db
-> MONGO_PORT=27017
-> PORT=3000
-> JWT_SECRET=secret_here
 > MONGO_ROOT_USER=root
 > MONGO_ROOT_PASSWORD=password
+> MONGO_PORT=27017
+> MONGODB_URI=mongodb://root:password@db:27017/mobiis-db?authSource=admin
+> PORT=3000
+> JWT_SECRET=secret_here
 > ```
 
 Depois continue com o processo de instalação e execução do sistema
@@ -67,25 +67,6 @@ $ pnpm run start
 ```
 
 ## 🐋 Usando Docker
-
-### Usando a partir do Dockerfile:
-
-Rode no terminal para construir a imagem:
-
-```bash
-$ docker build -t mobiis-challenge .
-```
-
-E rode o container:
-
-```bash
-$ docker run -p <sua_porta_da_api>:<sua_porta_da_api> --env-file .env mobiis-challenge
-```
-
-> Exemplo:
-> ```bash
-> $ docker run -p 3000:3000 --env-file .env mobiis-challenge
-> ```
 
 ### Usando a partir do Docker Compose
 
