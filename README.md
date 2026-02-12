@@ -10,7 +10,7 @@ Criar uma _API_ simples para gerenciar usuários, usando autenticação.
 ## 📜 Sumário
 
 1. [🧰 Ferramentas](#-ferramentas)
-2. [⚙️ Configurando o ambiente](#⚙️-configurando-o-ambiente)
+2. [⚙️ Configurando o ambiente](#-configurando-o-ambiente)
 3. [🐋 Usando Docker](#-usando-docker)
 4. [📖 Usando Swagger](#-usando-swagger)
 
