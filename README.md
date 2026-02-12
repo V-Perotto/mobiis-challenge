@@ -10,8 +10,9 @@ Criar uma _API_ simples para gerenciar usuários, usando autenticação.
 ## 📜 Sumário
 
 1. [🧰 Ferramentas](#-ferramentas)
-2. [🔙 Acessando e criando o Backend](#-acessando-e-criando-o-backend)
+2. [🔙 Configurando o ambiente](#-configurando-o-ambiente)
 3. [🐋 Usando Docker](#-usando-docker)
+4. [📖 Usando Swagger](#-usando-swagger)
 
 ## 🧰 Ferramentas
 O seguinte desafio foi realizado com as seguintes ferramentas e SO:
@@ -22,7 +23,7 @@ O seguinte desafio foi realizado com as seguintes ferramentas e SO:
 ![MongoDB](https://img.shields.io/badge/MongoDB%20-%20black?logo=mongodb&logoColor=%2336f763%20)
 ![Docker](https://img.shields.io/badge/Docker-blue?logo=docker&logoColor=white)
 
-## 🔙 Acessando e criando a API
+## ⚙️ Configurando o ambiente
 
 ### Variáveis de ambiente
 
@@ -75,3 +76,47 @@ Rode no terminal:
 ```bash
 $ docker compose up --build
 ```
+
+## 📖 Usando Swagger
+
+Para acessar o Swagger, basta acessar pelo link: `http://localhost:${PORT}/api-docs/#/` ou http://localhost:3000/api-docs/#/
+
+### Passo a passo para testar
+
+Ao acessar o Swagger, você irá se deparar com a seguinte tela:
+
+<p align="center">
+  <img src="./swagger.png" alt="Mobiis Logo" width="1000">
+</p>
+
+A ordem para testar será a seguinte:
+
+- `POST - /register`: Rota que será usada para registrar um novo usuário.
+    - Corpo da Requisição:
+    ```
+        "document": "string",
+        "docType": "CPF",
+        "password": "string" 
+- `POST - /login`: Rota que será usada para acessar usando um usuário criado.
+    - Corpo da Requisição:
+    ```
+        "document": "string",
+        "docType": "CPF",
+        "password": "string"
+- `Authorize`: Deverá inserir aqui o Bearer Token para poder usar as próximas rotas.  
+    - O Bearer Token virá na `key` ao realizar o login chamada `token`.
+    - Após inserir no campo de Valor e clicar em Autenticar, siga para a rota `/auth` para testar seu usuário.
+- `GET - /auth`: Retorna os dados do usuário logado via Token. 
+    - Corpo da Resposta:
+    ```
+        "id": "string", 
+        "document": "string", 
+        "docType": "CPF" 
+- `GET - /`: Lista todos os usuários cadastrados.
+    - Corpo da Resposta:
+    ```
+    [
+        "id": "string";
+        "document": "string";
+        "docType": "string";
+    ]
