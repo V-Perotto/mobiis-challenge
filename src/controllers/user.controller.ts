@@ -24,7 +24,7 @@ export class UserController {
     summary: 'Lista todos os usuários cadastrados',
     security: [{ bearerAuth: [] }]
   })
-  @Get("/")
+  @Get()
   async listUsers(
     @Res() res: Response
   ): Promise<Response> {
@@ -41,7 +41,7 @@ export class UserController {
     summary: 'Retorna os dados do usuário logado via Token',
     security: [{ bearerAuth: [] }] 
   })
-  @Get("/auth")
+  @Get("auth")
   async getUser(
     @Req() req: CustomRequest,
     @Res() res: Response
@@ -56,7 +56,7 @@ export class UserController {
   }
 
   @OpenAPI({ summary: 'Registra um novo usuário' })
-  @Post("/register")
+  @Post("register")
   async userRegister(
     @Body() userData: RegisterUserDto, 
     @Res() res: Response
@@ -70,7 +70,7 @@ export class UserController {
   };
 
   @OpenAPI({ summary: 'Login e retorno do Token JWT' })
-  @Post("/login")
+  @Post("login")
   async userLogin(
     @Body() loginData: LoginDto, 
     @Res() res: Response
